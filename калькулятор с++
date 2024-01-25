@@ -1,0 +1,105 @@
+#include <iostream>
+#include <cmath>
+
+int main() {
+    int choice;
+    double a, b, c;
+
+    while (true) {
+        std::cout << "Выберите операцию:\n";
+        std::cout << "1. Сложение\n";
+        std::cout << "2. Вычитание\n";
+        std::cout << "3. Частное\n";
+        std::cout << "4. Произведение\n";
+        std::cout << "5. Возведение в степень\n";
+        std::cout << "6. Нахождение квадратного корня\n";
+        std::cout << "7. Нахождение 1 процента от числа\n";
+        std::cout << "8. Найти факториал числа\n";
+        std::cout << "9. Выйти из программы\n";
+
+        std::cout << "Ваш выбор: ";
+        std::cin >> choice;
+
+        if (choice == 9) {
+            std::cout << "Программа завершена.\n";
+            break;
+        }
+
+        switch (choice) {
+            case 1:
+                std::cout << "Введите первое число: ";
+                std::cin >> a ;
+                std::cout << "Введите второе число: ";
+                std::cin >> b ;
+                c = a + b;
+                break;
+            case 2:
+                std::cout << "Введите первое число: ";
+                std::cin >> a ;
+                std::cout << "Введите второе число: ";
+                std::cin >> b ;
+                c = a - b;
+                break;
+            case 3:
+                std::cout << "Введите первое число: ";
+                std::cin >> a ;
+                std::cout << "Введите второе число: ";
+                std::cin >> b ;
+                if (b != 0) {
+                    c = a / b;
+                } else {
+                    std::cout << "Деление на ноль!\n";
+                    continue;
+                }
+                break;
+            case 4:
+                std::cout << "Введите первое число: ";
+                std::cin >> a ;
+                std::cout << "Введите второе число: ";
+                std::cin >> b ;
+                c = a * b;
+                break;
+            case 5:
+                std::cout << "Введите число: ";
+                std::cin >> a ;
+                std::cout << "Введите степень: ";
+                std::cin >> b ;
+                c = std::pow(a, b);
+                break;
+            case 6:
+                std::cout << "Введите число: ";
+                std::cin >> a;
+                if (a >= 0) {
+                    c = std::sqrt(a);
+                } else {
+                    std::cout << "Невозможно извлечь квадратный корень из отрицательного числа.\n";
+                    continue;
+                }
+                break;
+            case 7:
+                std::cout << "Введите число: ";
+                std::cin >> a;
+                c = a / 100;
+                break;
+            case 8:
+                std::cout << "Введите целое неотрицательное число: ";
+                std::cin >> a;
+                if (a < 0 || a != static_cast<int>(a)) {
+                    std::cout << "Факториал определен только для целых неотрицательных чисел.\n";
+                    continue;
+                }
+                c = 1;
+                for (int i = 1; i <= a; i++) {
+                    c *= i;
+                }
+                break;
+            default:
+                std::cout << "Некорректный выбор операции.\n";
+                continue;
+        }
+
+        std::cout << "Результат: " << c << "\n";
+    }
+
+    return 0;
+}
